@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="UChange_J2EE_SSH"
+  id="myeclipse.1401813187209"
+  context-root="/UChange_J2EE_SSH"
+  j2ee-spec="6.0"
+  archive="UChange_J2EE_SSH.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+
