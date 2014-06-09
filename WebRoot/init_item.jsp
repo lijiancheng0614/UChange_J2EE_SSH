@@ -1,4 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="s" uri="/struts-tags"%>
+
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -12,6 +14,7 @@
 <base href="<%=basePath%>">
 
 <title>UChange</title>
+
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="cache-control" content="no-cache">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -24,11 +27,16 @@ body {
 .field {
 	background-color: #FCFCFA;
 	margin: 20px;
-	padding: 40px;
+	padding-top: 40px;
+	padding-bottom: 40px;
 	border-radius: 20px;
 	-webkit-box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
 	-moz-box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
 	box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+}
+
+div {
+	font-size: 16px;
 }
 </style>
 </head>
@@ -36,28 +44,33 @@ body {
 <body>
 	<div class="container" align="center">
 		<div class="row-fluid" style="margin-top: 40px">
-			<img src="images/logo.png">
+			<div class="span2"></div>
+			<div class="span8 field">
+				<h2>
+					<img src="images/logo-small.png" style="margin-right: 40px">Add
+					Item
+				</h2>
+				<br />
 
-			<p />
+				<form action="init_item" name="init_item" method="post">
+					<div class="span3" align="right" style="line-height: 180%">
+						<p>
+							<strong>name:</strong>
+						</p>
 
-			<div class="span3"></div>
-			<div class="span6 field">
-				<form action="loginAction" name="loginAction" method="post">
-					<p>
-						<input type="text" placeholder="username" name='username' required
-							autofocus>
-					</p>
-
-					<p>
-						<input type="password" placeholder="password" name='password'
-							required>
-					</p>
-
-					<button type="submit" class="btn submit btn-primary"
-						style="margin-right: 30px">Login</button>
-					<button class="btn" type="button" style="margin-left: 30px">
-						<a href="register.jsp" style="text-decoration:none">Sign Up</a>
-					</button>
+						<p>
+							<strong>description:</strong>
+						</p>
+					</div>
+					<div class="span7" align="left">
+						<input type="text" name='name' />
+						<textarea rows="20" cols="20" name='description'
+							style="width:100%"></textarea>
+					</div>
+					<div class="span12">
+						<br />
+						<button type="submit" class="btn submit btn-primary">Submit</button>
+					</div>
 				</form>
 			</div>
 		</div>

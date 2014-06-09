@@ -40,5 +40,5 @@
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/commons-lang-2.5.jar"/>
 	<classpathentry kind="con" path="melibrary.com.genuitec.eclipse.lib.hibernate41.MYECLIPSE_HIBERNATE_4_1_CORE"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/derbyclient.jar"/>
-	<classpathentry kind="output" path="WebRoot/src"/>
+	<classpathentry kind="output" path="WebRoot/WEB-INF/classes"/>
 </classpath>
