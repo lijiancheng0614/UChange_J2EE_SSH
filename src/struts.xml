@@ -9,6 +9,7 @@
 		</action>
 		<action name="registerAction" class="uchange.RegisterAction">
 			<result name="success">/init_item.jsp</result>
+			<result name="input">/register.jsp</result>
 		</action>
 	</package>
 </struts>
