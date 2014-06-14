@@ -76,12 +76,11 @@ div {
 							</p>
 						</div>
 						<div class="span5">
-							<input type="text" name='username' required autofocus> <input
-								type="text" name='first_name'> <input type="text"
-								name='last_name'> <input type="password" name='password'
-								required autofocus> <input type="password"
-								name='password1' required autofocus> <input type="text"
-								name='email'>
+							<input type="text" name='studentId' required autofocus> <input
+								type="text" name='firstName'> <input type="text"
+								name='lastName'> <input type="password" name='password'
+								required> <input type="password" name='password1'
+								required> <input type="text" name='email'>
 						</div>
 						<div class="span12">
 							<br /> <br />
