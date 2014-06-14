@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+
+<hibernate-mapping>
+
+<class 
+    name="uchange.models.Deal"
+    table="deal"
+    catalog="uchange"
+>
+	<id 
+        name="id"
+        type="java.lang.Integer"
+    >
+		<column name="id" />
+	    <generator class="native" />
+    </id>
+    
+    <property
+        name="item"
+        type="uchange.models.Item"
+    >
+	    <column name="item"/>
+	</property>
+    
+	<property
+        name="p1"
+        type="uchange.models.Person"
+    >
+	    <column name="p1"/>
+	</property>
+	
+	<property
+        name="p2"
+        type="uchange.models.Person"
+    >
+	    <column name="p2"/>
+	</property>
+	
+	<property
+        name="dealTime"
+        type="java.sql.Timestamp"
+    >
+	    <column name="deal_time"/>
+	</property>
+
+
+	
+</class>
+</hibernate-mapping>

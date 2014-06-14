@@ -12,10 +12,19 @@ public class Comment implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	private int id;
 	private Person person;
 	private Item item;
 	private String content;
 	private Timestamp commentTime;
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public Person getPerson() {
 		return person;
