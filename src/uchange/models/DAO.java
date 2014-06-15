@@ -146,7 +146,7 @@ public class DAO {
 		log.debug("finding all Testuser instances");
 		Session s = getSession();
 		try {
-			String queryString = "from Testuser";
+			String queryString = "from " + clazz.getSimpleName();
 			Query queryObject = s.createQuery(queryString);
 			return queryObject.list();
 		} catch (RuntimeException re) {
@@ -207,27 +207,6 @@ public class DAO {
 		} finally {
 			
 		}
-	}
-
-	/**
-	 * check studentId and password
-	 * 
-	 * @param username
-	 * @param password
-	 * @return
-	 */
-	public Person getUserbyLoginInfo(String studentId, String password) {
-		Session session = this.openSession();
-		String hql = "from person where studentId=:studentId and password=:password";
-		Query query = session.createQuery(hql);
-		query.setString("studentId", studentId);
-		query.setString("password", password);
-
-		// 用uniqueResult获取唯一对象，或者用list获取对象列表
-		Person user = (Person) query.uniqueResult();
-		session.close();
-		return user;
-
 	}
 
 	public Session openSession() {

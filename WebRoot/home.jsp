@@ -4,7 +4,6 @@
 	<div class="row-fluid">
 		<div class="span8">
 			<h1>
-			<s:debug></s:debug>
 				Hello,
 				<s:property value="#session.person.getFirstName()" />
 				<s:property value="#session.person.getLastName()" />
@@ -21,7 +20,8 @@
 				<p>No request at the moment.</p>
 			</s:else>
 
-			<s:set name="itemNowName" value="#session.person.getItemNow().getName()" />
+			<s:set name="itemNowName"
+				value="#session.person.getItemNow().getName()" />
 			<s:set name="itemOriginalName"
 				value="#session.person.getItemOriginal().getName()" />
 			<h4>
@@ -43,18 +43,17 @@
 
 		<div class="span4" style="background-color:#FFF6EC">
 			<ul class="nav nav-tabs nav-stacked">
-				<li><a href="{% url 'user:self_profile' %}">My Profile</a>
-				</li> {% if edit_flag %}
-				<li><a href="{% url 'user:edit_item' %}">Edit My Item</a>
-				</li> {% endif %}
-				<li><a href="{% url 'user:item_list' %}">Find Goods</a>
-				</li>
+				<li><a href="{% url 'user:self_profile' %}">My Profile</a></li>
+				<s:if test="#itemNowName==#itemOriginalName">
+
+					<li><a href="{% url 'user:edit_item' %}">Edit My Item</a></li>
+
+				</s:if>
+				<li><a href="{% url 'user:item_list' %}">Find Goods</a></li>
 				<li><a href="{% url 'user:myrequest' %}">My Request
-						({{number_of_myrequests}})</a>
-				</li>
+						({{number_of_myrequests}})</a></li>
 				<li><a href="{% url 'user:person_history' user%}">My
-						Exchange History</a>
-				</li>
+						Exchange History</a></li>
 			</ul>
 		</div>
 	</div>

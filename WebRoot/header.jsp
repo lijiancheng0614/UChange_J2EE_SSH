@@ -70,7 +70,7 @@ a {
 							<a href="home.jsp" style="text-decoration:none">Home</a>
 						</button>
 						<button class="btn btn-large" type="button">
-							<a href="{% url 'user:item_list' %}" style="text-decoration:none">Item
+							<a href="item_list.jsp" style="text-decoration:none">Item
 								list</a>
 						</button>
 						<button class="btn btn-large" type="button">
@@ -82,7 +82,7 @@ a {
 								style="text-decoration:none">Received request</a>
 						</button>
 						<button class="btn btn-large" type="button">
-							<a href="{% url 'user_logout' %}" style="text-decoration:none">Log
+							<a href="index.jsp" style="text-decoration:none">Log
 								out</a>
 						</button></td>
 				</tr>
