@@ -28,13 +28,13 @@ public class LoginAction extends ActionSupport implements ModelDriven<Person> {
 		List<Person> l = personDAO.findByProperty(Person.class, "studentId",
 				person.getStudentId());
 		if (l.size() == 0) {
-			this.addActionError("没有该用户!");
+			this.addActionError("No such user!");
 			return;
 		}
 		Person p = l.get(0);
 		//personDAO.update(p);
 		if (!person.getPassword().equals(p.getPassword())) {
-			this.addActionError("请输入正确的密码!");
+			this.addActionError("Please enter the correct password!");
 		}
 		person = p;
 		Item item = p.getItemNow();

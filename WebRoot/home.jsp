@@ -43,17 +43,19 @@
 
 		<div class="span4" style="background-color:#FFF6EC">
 			<ul class="nav nav-tabs nav-stacked">
-				<li><a href="{% url 'user:self_profile' %}">My Profile</a></li>
+				<li><a href="myprofile.jsp">My Profile</a>
+				</li>
 				<s:if test="#itemNowName==#itemOriginalName">
-
-					<li><a href="{% url 'user:edit_item' %}">Edit My Item</a></li>
-
+					<li><a href="edit_item.jsp">Edit My Item</a>
+					</li>
 				</s:if>
-				<li><a href="{% url 'user:item_list' %}">Find Goods</a></li>
-				<li><a href="{% url 'user:myrequest' %}">My Request
-						({{number_of_myrequests}})</a></li>
-				<li><a href="{% url 'user:person_history' user%}">My
-						Exchange History</a></li>
+				<li><a href="item_list.jsp">Find Goods</a>
+				</li>
+				<li><a href="myrequest.jsp">My Request
+						({{number_of_myrequests}})</a>
+				</li>
+				<li><a href="person_history.jsp">My Exchange History</a>
+				</li>
 			</ul>
 		</div>
 	</div>

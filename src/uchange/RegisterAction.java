@@ -32,8 +32,8 @@ public class RegisterAction extends ActionSupport implements
 
 	public void validate() {
 		if (!person.getPassword().equals(password1)) {
-			// this.addFieldError("password1.check", "请再次输入相同的密码!");
-			this.addActionError("请再次输入相同的密码!");
+			// this.addFieldError("password1.check", "Please enter the same password!");
+			this.addActionError("Please enter the same password!");
 		}
 	}
 

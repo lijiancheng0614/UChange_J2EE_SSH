@@ -54,7 +54,7 @@ public class DAO {
 			t.rollback();
 			throw re;
 		} finally {
-			
+
 		}
 	}
 
@@ -71,7 +71,7 @@ public class DAO {
 			t.rollback();
 			throw re;
 		} finally {
-			
+
 		}
 	}
 
@@ -95,7 +95,7 @@ public class DAO {
 			log.error("get failed", re);
 			throw re;
 		} finally {
-			
+
 		}
 	}
 
@@ -112,7 +112,7 @@ public class DAO {
 			log.error("find by example failed", re);
 			throw re;
 		} finally {
-			
+
 		}
 	}
 
@@ -138,7 +138,7 @@ public class DAO {
 			log.error("find by property name failed", re);
 			throw re;
 		} finally {
-			
+
 		}
 	}
 
@@ -153,7 +153,7 @@ public class DAO {
 			log.error("find all failed", re);
 			throw re;
 		} finally {
-			
+
 		}
 	}
 
@@ -171,7 +171,7 @@ public class DAO {
 			t.rollback();
 			throw re;
 		} finally {
-			
+
 		}
 	}
 
@@ -188,7 +188,7 @@ public class DAO {
 			t.rollback();
 			throw re;
 		} finally {
-			
+
 		}
 	}
 
@@ -205,7 +205,7 @@ public class DAO {
 			t.rollback();
 			throw re;
 		} finally {
-			
+
 		}
 	}
 

@@ -16,5 +16,12 @@
 			<result name="success">/home.jsp</result>
 			<result name="input">/init_item.jsp</result>
 		</action>
+		<action name="editProfileAction" class="uchange.EditProfileAction">
+			<result name="success">/myprofile.jsp</result>
+			<result name="input">/edit_profile.jsp</result>
+		</action>
+		<action name="editItemAction" class="uchange.EditItemAction">
+			<result name="success">/edit_item.jsp</result>
+		</action>
 	</package>
 </struts>

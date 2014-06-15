@@ -37,7 +37,7 @@ public class InitItemAction extends ActionSupport implements ModelDriven<Item> {
 		System.out.println("Init item: " + item.getName() + " "
 				+ item.getDescription());
 		if (item.getName() == null || item.getName().equals("")) {
-			this.addActionError("请输入物品名称!");
+			this.addActionError("Please enter the name!");
 		}
 	}
 
