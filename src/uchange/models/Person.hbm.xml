@@ -23,7 +23,7 @@
         name="studentId"
         type="java.lang.String"
     >
-	    <column name="student_id" length="10" not-null="true" />
+	    <column name="studentId" length="10" not-null="true" />
 	</property>
 	
 	<property
@@ -37,14 +37,14 @@
         name="firstName"
         type="java.lang.String"
     >
-	    <column name="first_name" length="50" not-null="true" />
+	    <column name="firstName" length="50" not-null="true" />
 	</property>
 	
 	<property
         name="lastName"
         type="java.lang.String"
     >
-	    <column name="last_name" length="50" not-null="true" />
+	    <column name="lastName" length="50" not-null="true" />
 	</property>
 	
 	<property
@@ -58,14 +58,14 @@
         name="itemNow"
         type="uchange.models.Item"
     >
-	    <column name="item_now"/>
+	    <column name="itemNow"/>
 	</property>
 	
 	<property
         name="itemOriginal"
         type="uchange.models.Item"
     >
-	    <column name="item_original"/>
+	    <column name="itemOriginal"/>
 	</property>
 
 	

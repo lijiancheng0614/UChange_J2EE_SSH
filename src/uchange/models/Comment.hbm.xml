@@ -44,7 +44,7 @@
         name="commentTime"
         type="java.sql.Timestamp"
     >
-	    <column name="comment_time"/>
+	    <column name="commentTime"/>
 	</property>
 
 	

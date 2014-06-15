@@ -6,6 +6,7 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
 import uchange.models.Person;
+import uchange.models.DAO;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
@@ -32,13 +33,15 @@ public class RegisterAction extends ActionSupport implements
 	public String execute() throws Exception {
 		System.out.println("Register: " + person.toString());
 		System.out.println("StudentID: " + person.getStudentId());
-		Configuration cfg = new Configuration().configure();
-		SessionFactory factory = cfg.buildSessionFactory();
-		Session session = factory.openSession();
-		Transaction tx = session.beginTransaction();
-		session.save(person);
-		tx.commit();
-		session.close();
+		//Configuration cfg = new Configuration().configure();
+		//SessionFactory factory = cfg.buildSessionFactory();
+		//Session session = factory.openSession();
+		//Transaction tx = session.beginTransaction();
+		//session.save(person);
+		//tx.commit();
+		//session.close();
+		DAO personDAO = new DAO();
+		personDAO.save(person);
 		return SUCCESS;
 	}
 

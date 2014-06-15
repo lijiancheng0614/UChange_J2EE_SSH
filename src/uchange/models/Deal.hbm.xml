@@ -44,7 +44,7 @@
         name="dealTime"
         type="java.sql.Timestamp"
     >
-	    <column name="deal_time"/>
+	    <column name="dealTime"/>
 	</property>
 
 
