@@ -1,12 +1,8 @@
 package uchange;
 
-import java.util.List;
-
+import uchange.controls.AuthControlImpl;
 import uchange.models.Person;
-import uchange.models.Item;
-import uchange.models.DAO;
 
-import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
@@ -23,22 +19,12 @@ public class LoginAction extends ActionSupport implements ModelDriven<Person> {
 	}
 
 	public void validate() {
-		System.out.println("Login: " + person.getStudentId());
-		DAO personDAO = new DAO();
-		List<Person> l = personDAO.findByProperty(Person.class, "studentId",
-				person.getStudentId());
-		if (l.size() == 0) {
-			this.addActionError("没有该用户!");
-			return;
+		
+		AuthControlImpl control = new AuthControlImpl();
+		if (!control.userLogin(person)) {
+			this.addActionError("请输入正确的用户名和密码!");
 		}
-		Person p = l.get(0);
-		//personDAO.update(p);
-		if (!person.getPassword().equals(p.getPassword())) {
-			this.addActionError("请输入正确的密码!");
-		}
-		person = p;
-		Item item = p.getItemNow();
-		ActionContext.getContext().getSession().put("person", person);
+		
 	}
 
 	@Override

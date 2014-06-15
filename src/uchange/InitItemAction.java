@@ -1,8 +1,8 @@
 package uchange;
 
-import uchange.models.Person;
+import uchange.controls.AuthControlImpl;
 import uchange.models.Item;
-import uchange.models.DAO;
+import uchange.models.Person;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
@@ -18,24 +18,19 @@ public class InitItemAction extends ActionSupport implements ModelDriven<Item> {
 	private Item item = new Item();
 
 	public String execute() throws Exception {
-		DAO itemDAO = new DAO();
-		itemDAO.save(item);
-
+		
 		person = (Person) ActionContext.getContext().getSession().get("person");
+		
+		AuthControlImpl control = new AuthControlImpl();
+		control.userRegister(person, item);
 
-		System.out.println("Init item: " + person.getStudentId() + " "
-				+ item.getName());
-
-		person.setItemOriginal(item);
-		person.setItemNow(item);
-		DAO personDAO = new DAO();
-		personDAO.save(person);
 		return SUCCESS;
 	}
 
 	public void validate() {
 		System.out.println("Init item: " + item.getName() + " "
 				+ item.getDescription());
+		
 		if (item.getName() == null || item.getName().equals("")) {
 			this.addActionError("请输入物品名称!");
 		}
