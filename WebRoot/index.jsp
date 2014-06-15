@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="s" uri="/struts-tags"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -43,9 +44,14 @@ body {
 			<div class="span3"></div>
 			<div class="span6 field">
 				<form action="loginAction" name="loginAction" method="post">
+					<s:if test="hasActionErrors()">
+						<div class="alert alert-error">
+							<s:actionerror />
+						</div>
+					</s:if>
 					<p>
-						<input type="text" placeholder="username" name='username' required
-							autofocus>
+						<input type="text" placeholder="username" name='studentId'
+							required autofocus>
 					</p>
 
 					<p>

@@ -10,32 +10,34 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.criterion.Example;
 import org.hibernate.criterion.Property;
-import org.hibernate.criterion.Restrictions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.core.GenericTypeResolver;
-
 import uchange.models.HibernateSessionFactory;
 
-
-/** A data access object for all entities of UChange
- * modified from hibernateTest1:comm.buaa.hibernate, and provides generic search methods
+/**
+ * A data access object for all entities of UChange modified from
+ * hibernateTest1:comm.buaa.hibernate, and provides generic search methods
  */
 public class DAO {
+	@SuppressWarnings("unused")
 	private static final String modelPackagePrefix = "uchange.models.";
-	private static final Logger log = LoggerFactory
-			.getLogger(DAO.class);
-    private SessionFactory factory;  
-    public DAO()  
-    {  
-        Configuration cfg = new Configuration().configure();  
-        this.factory = cfg.buildSessionFactory();  
-    } 
-    
+	private static final Logger log = LoggerFactory.getLogger(DAO.class);
+	private SessionFactory factory;
+
+	@SuppressWarnings("deprecation")
+	public DAO() {
+		Configuration cfg = new Configuration().configure();
+		this.factory = cfg.buildSessionFactory();
+	}
+
 	public Session getSession() {
 		return HibernateSessionFactory.getSession();
 	}
-    
+
+	public void update(Object transientInstance) {
+		this.getSession().update(transientInstance);
+	}
+
 	public void save(Object transientInstance) {
 		log.debug("saving POJO instance");
 		System.out.println("saving POJO instance");
@@ -51,9 +53,8 @@ public class DAO {
 			System.out.println("save failed");
 			t.rollback();
 			throw re;
-		}
-		finally{
-			s.close();
+		} finally {
+			
 		}
 	}
 
@@ -69,39 +70,40 @@ public class DAO {
 			log.error("delete failed", re);
 			t.rollback();
 			throw re;
-		}
-		finally{
-			s.close();
+		} finally {
+			
 		}
 	}
 
-	
-	/**窝越来越讨厌java伪泛型的类型擦除了
-	 * @param clazz 因为类型擦除所以需要把要找的类型名.class作为一个参数否则无法得知T的类型
-	 * @param id 
+	/**
+	 * 窝越来越讨厌java伪泛型的类型擦除了
+	 * 
+	 * @param clazz
+	 *            因为类型擦除所以需要把要找的类型名.class作为一个参数否则无法得知T的类型
+	 * @param id
 	 * @return 找到的对象
 	 */
-	public <T>T findById(Class<T> clazz, java.lang.Integer id) {
-		log.debug("getting POJO: " + clazz.getName() + ", with id: " + id.toString());
+	public <T> T findById(Class<T> clazz, java.lang.Integer id) {
+		log.debug("getting POJO: " + clazz.getName() + ", with id: "
+				+ id.toString());
 		Session s = getSession();
 		try {
-			
-			T instance = (T)s.get(clazz.getName(), id);
+
+			T instance = (T) s.get(clazz.getName(), id);
 			return instance;
 		} catch (RuntimeException re) {
 			log.error("get failed", re);
 			throw re;
-		}		finally{
-			s.close();
+		} finally {
+			
 		}
 	}
 
-	public <T>List<T> findByExample(Class<T> clazz,T instance) {
+	public <T> List<T> findByExample(Class<T> clazz, T instance) {
 		log.debug("finding POJO instance by example: " + clazz.getName());
 		Session s = getSession();
 		try {
-			List results = s
-					.createCriteria(clazz)
+			List results = s.createCriteria(clazz)
 					.add(Example.create(instance)).list();
 			log.debug("find by example successful, result size: "
 					+ results.size());
@@ -109,39 +111,38 @@ public class DAO {
 		} catch (RuntimeException re) {
 			log.error("find by example failed", re);
 			throw re;
-		}		finally{
-			s.close();
+		} finally {
+			
 		}
 	}
 
-	
-	public <T>List<T> findByProperty(Class<T> clazz,String propertyName, Object value) {
-		log.debug("finding POJO instance: " + clazz.getName() + ", with property: " + propertyName
-				+ ", value: " + value);
+	public <T> List<T> findByProperty(Class<T> clazz, String propertyName,
+			Object value) {
+		log.debug("finding POJO instance: " + clazz.getName()
+				+ ", with property: " + propertyName + ", value: " + value);
 		Session s = getSession();
 		try {
 			Property prop = Property.forName(propertyName);
-			List results = s
-					.createCriteria(clazz).add(prop.eq(value)).list();
+			List results = s.createCriteria(clazz).add(prop.eq(value)).list();
 			log.debug("find by example successful, result size: "
 					+ results.size());
 			return results;
-			
-			//now use criteria instead
-			//String queryString = "from Testuser as model where model."
-			//		+ propertyName + "= ?";
-			//Query queryObject = getSession().createQuery(queryString);
-			//queryObject.setParameter(0, value);
-			//return queryObject.list();
+
+			// now use criteria instead
+			// String queryString = "from Testuser as model where model."
+			// + propertyName + "= ?";
+			// Query queryObject = getSession().createQuery(queryString);
+			// queryObject.setParameter(0, value);
+			// return queryObject.list();
 		} catch (RuntimeException re) {
 			log.error("find by property name failed", re);
 			throw re;
-		}		finally{
-			s.close();
+		} finally {
+			
 		}
 	}
 
-	public <T>List<T> findAll(Class<T> clazz) {
+	public <T> List<T> findAll(Class<T> clazz) {
 		log.debug("finding all Testuser instances");
 		Session s = getSession();
 		try {
@@ -151,17 +152,17 @@ public class DAO {
 		} catch (RuntimeException re) {
 			log.error("find all failed", re);
 			throw re;
-		}		finally{
-			s.close();
+		} finally {
+			
 		}
 	}
 
-	public <T>T merge(T detachedInstance) {
+	public <T> T merge(T detachedInstance) {
 		log.debug("merging POJO instance");
 		Session s = getSession();
 		Transaction t = s.beginTransaction();
 		try {
-			T result = (T)s.merge(detachedInstance);
+			T result = (T) s.merge(detachedInstance);
 			log.debug("merge successful");
 			t.commit();
 			return result;
@@ -169,8 +170,8 @@ public class DAO {
 			log.error("merge failed", re);
 			t.rollback();
 			throw re;
-		}	finally{
-			s.close();
+		} finally {
+			
 		}
 	}
 
@@ -186,8 +187,8 @@ public class DAO {
 			log.error("attach failed", re);
 			t.rollback();
 			throw re;
-		}		finally{
-			s.close();
+		} finally {
+			
 		}
 	}
 
@@ -203,35 +204,36 @@ public class DAO {
 			log.error("attach failed", re);
 			t.rollback();
 			throw re;
-		}		finally{
-			s.close();
+		} finally {
+			
 		}
 	}
-    
-  /** check studentId and password
- * @param username
- * @param password
- * @return
- */
-public Person getUserbyLoginInfo(String studentId, String password)  
-  {  
-      Session session = this.openSession();  
-      String hql = "from person where studentId=:studentId and password=:password";  
-      Query query = session.createQuery(hql);  
-      query.setString("studentId", studentId);  
-      query.setString("password", password);  
-        
-      //用uniqueResult获取唯一对象，或者用list获取对象列表  
-      Person user = (Person) query.uniqueResult();  
-      session.close();
-      return user;  
-        
-  }  
 
-  public Session openSession()  
-  {  
-        
-      Session session = this.factory.openSession();  
-      return session;  
-  } 
+	/**
+	 * check studentId and password
+	 * 
+	 * @param username
+	 * @param password
+	 * @return
+	 */
+	public Person getUserbyLoginInfo(String studentId, String password) {
+		Session session = this.openSession();
+		String hql = "from person where studentId=:studentId and password=:password";
+		Query query = session.createQuery(hql);
+		query.setString("studentId", studentId);
+		query.setString("password", password);
+
+		// 用uniqueResult获取唯一对象，或者用list获取对象列表
+		Person user = (Person) query.uniqueResult();
+		session.close();
+		return user;
+
+	}
+
+	public Session openSession() {
+
+		Session session = this.factory.openSession();
+		return session;
+	}
+
 }

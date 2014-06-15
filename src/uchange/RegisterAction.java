@@ -1,13 +1,8 @@
 package uchange;
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import org.hibernate.cfg.Configuration;
-
 import uchange.models.Person;
-import uchange.models.DAO;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
@@ -29,25 +24,15 @@ public class RegisterAction extends ActionSupport implements
 		this.password1 = password1;
 	}
 
-	@SuppressWarnings("deprecation")
 	public String execute() throws Exception {
-		System.out.println("Register: " + person.toString());
-		System.out.println("StudentID: " + person.getStudentId());
-		//Configuration cfg = new Configuration().configure();
-		//SessionFactory factory = cfg.buildSessionFactory();
-		//Session session = factory.openSession();
-		//Transaction tx = session.beginTransaction();
-		//session.save(person);
-		//tx.commit();
-		//session.close();
-		DAO personDAO = new DAO();
-		personDAO.save(person);
+		System.out.println("Register: " + person.getStudentId());
+		ActionContext.getContext().getSession().put("person", person);
 		return SUCCESS;
 	}
 
 	public void validate() {
 		if (!person.getPassword().equals(password1)) {
-			//this.addFieldError("password1.check", "请再次输入相同的密码!");
+			// this.addFieldError("password1.check", "请再次输入相同的密码!");
 			this.addActionError("请再次输入相同的密码!");
 		}
 	}

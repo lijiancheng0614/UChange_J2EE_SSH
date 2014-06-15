@@ -1,34 +1,49 @@
 package uchange;
 
-import com.opensymphony.xwork2.ActionSupport;
+import java.util.List;
 
-public class LoginAction extends ActionSupport {
+import uchange.models.Person;
+import uchange.models.Item;
+import uchange.models.DAO;
+
+import com.opensymphony.xwork2.ActionContext;
+import com.opensymphony.xwork2.ActionSupport;
+import com.opensymphony.xwork2.ModelDriven;
+
+public class LoginAction extends ActionSupport implements ModelDriven<Person> {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private String username;
-	private String password;
 
-	public String getUsername() {
-		return this.username;
-	}
-
-	public String getPassword() {
-		return this.password;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
+	private Person person = new Person();
 
 	public String execute() throws Exception {
-		System.out.print("ok! " + getUsername());
 		return SUCCESS;
+	}
+
+	public void validate() {
+		System.out.println("Login: " + person.getStudentId());
+		DAO personDAO = new DAO();
+		List<Person> l = personDAO.findByProperty(Person.class, "studentId",
+				person.getStudentId());
+		if (l.size() == 0) {
+			this.addActionError("没有该用户!");
+			return;
+		}
+		Person p = l.get(0);
+		//personDAO.update(p);
+		if (!person.getPassword().equals(p.getPassword())) {
+			this.addActionError("请输入正确的密码!");
+		}
+		person = p;
+		Item item = p.getItemNow();
+		ActionContext.getContext().getSession().put("person", person);
+	}
+
+	@Override
+	public Person getModel() {
+		return person;
 	}
 
 }

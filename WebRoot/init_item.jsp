@@ -52,7 +52,7 @@ div {
 				</h2>
 				<br />
 
-				<form action="init_item" name="init_item" method="post">
+				<form action="initItemAction" name="initItemAction" method="post">
 					<div class="span3" align="right" style="line-height: 180%">
 						<p>
 							<strong>name:</strong>

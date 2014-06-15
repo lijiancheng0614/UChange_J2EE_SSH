@@ -57,7 +57,7 @@ a {
 							</div>
 							<div class="span4">
 								<h4 class="text-right">
-									<s:property value="username" />
+									<s:property value="#session.person.getStudentId()" />
 								</h4>
 							</div>
 						</div>
@@ -67,7 +67,7 @@ a {
 				<tr>
 					<td style="border-top-style:none">
 						<button class="btn btn-large" type="button">
-							<a href="{% url 'user:self' %}" style="text-decoration:none">Home</a>
+							<a href="home.jsp" style="text-decoration:none">Home</a>
 						</button>
 						<button class="btn btn-large" type="button">
 							<a href="{% url 'user:item_list' %}" style="text-decoration:none">Item
