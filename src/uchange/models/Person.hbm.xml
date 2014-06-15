@@ -54,19 +54,19 @@
 	    <column name="email" length="50" not-null="true" />
 	</property>
 
-	<property
+	<many-to-one
         name="itemNow"
-        type="uchange.models.Item"
+        class="uchange.models.Item"
     >
 	    <column name="itemNow"/>
-	</property>
+	</many-to-one>
 	
-	<property
+	<many-to-one
         name="itemOriginal"
-        type="uchange.models.Item"
+        class="uchange.models.Item"
     >
 	    <column name="itemOriginal"/>
-	</property>
+	</many-to-one>
 
 	
 </class>

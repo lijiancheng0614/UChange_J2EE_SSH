@@ -19,19 +19,19 @@
 	    <generator class="native" />
     </id>
     
-	<property
+	<many-to-one
         name="person"
-        type="uchange.models.Person"
+        class="uchange.models.Person"
     >
 	    <column name="person"/>
-	</property>
+	</many-to-one>
 	
-	<property
+	<many-to-one
         name="item"
-        type="uchange.models.Item"
+        class="uchange.models.Item"
     >
 	    <column name="item"/>
-	</property>
+	</many-to-one>
 
 	
 </class>

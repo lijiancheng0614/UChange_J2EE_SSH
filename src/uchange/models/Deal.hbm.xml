@@ -19,26 +19,26 @@
 	    <generator class="native" />
     </id>
     
-    <property
+    <many-to-one
         name="item"
-        type="uchange.models.Item"
+        class="uchange.models.Item"
     >
 	    <column name="item"/>
-	</property>
+	</many-to-one>
     
-	<property
+	<many-to-one
         name="p1"
-        type="uchange.models.Person"
+        class="uchange.models.Person"
     >
 	    <column name="p1"/>
-	</property>
+	</many-to-one>
 	
-	<property
+	<many-to-one
         name="p2"
-        type="uchange.models.Person"
+        class="uchange.models.Person"
     >
 	    <column name="p2"/>
-	</property>
+	</many-to-one>
 	
 	<property
         name="dealTime"
