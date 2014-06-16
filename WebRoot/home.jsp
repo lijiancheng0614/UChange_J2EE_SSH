@@ -25,7 +25,8 @@
 			<s:set name="itemOriginalName"
 				value="#session.person.getItemOriginal().getName()" />
 			<h4>
-				Item Owned Now: <a href="{% url 'user:detail' info.item_now.id %}">
+				Item Owned Now: <a
+					href="item_detail.jsp?itemID=<s:property value="#session.person.getItemNow().getId()" />">
 					<s:property value="itemNowName" /> </a>
 			</h4>
 			<br />
@@ -43,19 +44,14 @@
 
 		<div class="span4" style="background-color:#FFF6EC">
 			<ul class="nav nav-tabs nav-stacked">
-				<li><a href="myprofile.jsp">My Profile</a>
-				</li>
+				<li><a href="myprofile.jsp">My Profile</a></li>
 				<s:if test="#itemNowName==#itemOriginalName">
-					<li><a href="edit_item.jsp">Edit My Item</a>
-					</li>
+					<li><a href="edit_item.jsp">Edit My Item</a></li>
 				</s:if>
-				<li><a href="item_list.jsp">Find Goods</a>
-				</li>
+				<li><a href="item_list.jsp">Find Goods</a></li>
 				<li><a href="myrequest.jsp">My Request
-						({{number_of_myrequests}})</a>
-				</li>
-				<li><a href="person_history.jsp">My Exchange History</a>
-				</li>
+						({{number_of_myrequests}})</a></li>
+				<li><a href="person_history.jsp">My Exchange History</a></li>
 			</ul>
 		</div>
 	</div>

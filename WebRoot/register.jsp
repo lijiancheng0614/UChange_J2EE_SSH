@@ -83,7 +83,7 @@ div,label {
 				</div>
 			</s:if>
 			<div class="control-group">
-				<label class="control-label" for="studentId">Username</label>
+				<label class="control-label" for="studentId">Student ID</label>
 				<div class="controls">
 					<input type="text" id="studentId" name="studentId" required
 						autofocus>

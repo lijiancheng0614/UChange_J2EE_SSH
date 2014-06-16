@@ -12,8 +12,10 @@
 				List<Item> l = itemDAO.findAll(Item.class);
 				for (int i = 0; i < l.size(); i++) {
 			%>
-			<li><a href="{% url 'user:detail' item.id %}"> <%=l.get(i).getName()%>
-			</a></li>
+			<li><a
+				href="item_detail.jsp?itemID=<%=l.get(i).getId()%>">
+					<%=l.get(i).getName()%> </a>
+			</li>
 			<%
 				}
 			%>
