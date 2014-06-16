@@ -23,5 +23,13 @@
 		<action name="editItemAction" class="uchange.EditItemAction">
 			<result name="success">/edit_item.jsp</result>
 		</action>
+		<action name="acceptAction" class="uchange.AcceptAction">
+			<param name="itemID">${itemID}</param>
+			<result name="success">/item_detail.jsp</result>
+		</action>
+		<action name="sendAction" class="uchange.SendAction">
+			<param name="itemID">${itemID}</param>
+			<result name="success">/item_detail.jsp</result>
+		</action>
 	</package>
 </struts>
