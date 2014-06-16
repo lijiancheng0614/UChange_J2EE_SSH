@@ -1,9 +1,8 @@
 package uchange;
 
-import uchange.models.DAO;
+import uchange.controls.EditControlImpl;
 import uchange.models.Person;
 
-import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
@@ -26,18 +25,8 @@ public class EditProfileAction extends ActionSupport implements
 	}
 
 	public String execute() throws Exception {
-		Person originPerson = (Person) ActionContext.getContext().getSession()
-				.get("person");
-		DAO personDAO = new DAO();
-		personDAO.update(originPerson);
-
-		originPerson.setFirstName(person.getFirstName());
-		originPerson.setLastName(person.getLastName());
-		originPerson.setEmail(person.getEmail());
-		if (!person.getPassword().equals(""))
-			originPerson.setPassword(person.getPassword());
-
-		personDAO.save(originPerson);
+		EditControlImpl control=new EditControlImpl();
+		control.userEdit(person);
 
 		return SUCCESS;
 	}
