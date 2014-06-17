@@ -31,5 +31,9 @@
 			<param name="itemID">${itemID}</param>
 			<result name="success">/item_detail.jsp</result>
 		</action>
+		<action name="commentAction" class="uchange.CommentAction">
+			<param name="itemID">${itemID}</param>
+			<result name="success">/item_detail.jsp</result>
+		</action>
 	</package>
 </struts>

@@ -61,19 +61,25 @@
 					<%=numRequest%></h4>
 				<hr />
 				<h3>Comments</h3>
-				{% for each in comments %}
+				<%
+					List<Comment> comment = dao.findByProperty(Comment.class, "item",
+							item);
+					for (Comment c : comment) {
+				%>
 				<div class="well">
 					<p>
 						<small><a
-							href="{% url 'user:profile' each.person.student_id %}">{{each.person.first_name}}
-								{{each.person.last_name}}</a> posted on {{each.comment_time}} </small>
+							href="profile.jsp?personID=<%=c.getPerson().getId()%>"><%=c.getPerson().getFirstName()%>
+								<%=c.getPerson().getLastName()%></a> posted on <%=c.getCommentTime().toLocaleString()%>
+						</small>
 					</p>
-					<p>{{each.content|safe|linebreaksbr}}</p>
+					<p><%=c.getContent()%></p>
 				</div>
-				{% endfor %}
-				<form action="/home/item/{{item.id}}/post_comment/" method="post"
+				<%
+					}
+				%>
+				<form action="commentAction?itemID=<%=itemID%>" name="commentAction" method="post"
 					style="margin-right:16px">
-					{% csrf_token %}
 					<p>
 						<textarea rows="7" cols="20" name="content" style="width:100%"></textarea>
 					</p>
@@ -89,7 +95,8 @@
 				<%
 					if (me.getId() == person.getId()) {
 				%>
-				<li><h4>This is your own item.</h4></li>
+				<li><h4>This is your own item.</h4>
+				</li>
 				<%
 					} else {
 						if (acceptFlag) {
@@ -99,8 +106,7 @@
 						with him, just <a
 							href="acceptAction?itemID=<%=itemID%>&requestID=<%=requestID%>"
 							style="font-weight:bold;color:#F00">Accept</a>
-					</h4>
-				</li>
+					</h4></li>
 				<%
 					} else if (sentFlag) {
 				%>
@@ -110,7 +116,8 @@
 					} else {
 				%>
 
-				<li><a href="sendAction?itemID=<%=itemID%>">Send Request</a></li>
+				<li><a href="sendAction?itemID=<%=itemID%>">Send Request</a>
+				</li>
 
 				<%
 					}
@@ -118,7 +125,8 @@
 				%>
 
 				<li><a href="item_history.jsp?itemID=<%=itemID%>">Exchange
-						History</a></li>
+						History</a>
+				</li>
 			</ul>
 		</div>
 	</div>
