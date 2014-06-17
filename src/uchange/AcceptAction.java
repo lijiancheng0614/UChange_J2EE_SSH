@@ -1,5 +1,6 @@
 package uchange;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import uchange.models.*;
@@ -35,6 +36,21 @@ public class AcceptAction extends ActionSupport {
 		dao.update(person);
 		dao.update(person2);
 		dao.delete(request);
+
+		Deal d1 = new Deal();
+		d1.setP1(person);
+		d1.setP2(person2);
+		d1.setItem(person2.getItemNow());
+		d1.setDealTime(new Timestamp(System.currentTimeMillis()));
+		dao.save(d1);
+
+		Deal d2 = new Deal();
+		d2.setP1(person2);
+		d2.setP2(person);
+		d2.setItem(person.getItemNow());
+		d2.setDealTime(d1.getDealTime());
+		dao.save(d2);
+
 		return SUCCESS;
 	}
 

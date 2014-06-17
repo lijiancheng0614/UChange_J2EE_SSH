@@ -27,10 +27,9 @@
 
 		<p />
 		<li><h4>
-				<a href="{% url 'user:person_history' info.student_id%}">Exchange
+				<a href="person_history.jsp?personID=<%=person.getId()%>">Exchange
 					History</a>
-			</h4>
-		</li>
+			</h4></li>
 	</div>
 </div>
 

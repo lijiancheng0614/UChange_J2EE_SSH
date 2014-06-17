@@ -10,11 +10,10 @@
 			<%
 				DAO itemDAO = new DAO();
 				List<Item> l = itemDAO.findAll(Item.class);
-				for (int i = 0; i < l.size(); i++) {
+				for (Item item : l) {
 			%>
-			<li><a
-				href="item_detail.jsp?itemID=<%=l.get(i).getId()%>">
-					<%=l.get(i).getName()%> </a>
+			<li><a href="item_detail.jsp?itemID=<%=item.getId()%>"> <%=item.getName()%>
+			</a>
 			</li>
 			<%
 				}

@@ -89,8 +89,7 @@
 				<%
 					if (me.getId() == person.getId()) {
 				%>
-				<li><h4>This is your own item.</h4>
-				</li>
+				<li><h4>This is your own item.</h4></li>
 				<%
 					} else {
 						if (acceptFlag) {
@@ -100,7 +99,8 @@
 						with him, just <a
 							href="acceptAction?itemID=<%=itemID%>&requestID=<%=requestID%>"
 							style="font-weight:bold;color:#F00">Accept</a>
-					</h4></li>
+					</h4>
+				</li>
 				<%
 					} else if (sentFlag) {
 				%>
@@ -110,17 +110,15 @@
 					} else {
 				%>
 
-				<li><a href="sendAction?itemID=<%=itemID%>">Send Request</a>
-				</li>
+				<li><a href="sendAction?itemID=<%=itemID%>">Send Request</a></li>
 
 				<%
 					}
 					}
 				%>
 
-				<li><a href="{% url 'user:item_history' item.id %}">Exchange
-						History</a>
-				</li>
+				<li><a href="item_history.jsp?itemID=<%=itemID%>">Exchange
+						History</a></li>
 			</ul>
 		</div>
 	</div>

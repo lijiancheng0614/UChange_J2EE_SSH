@@ -8,10 +8,13 @@
 	DAO dao = new DAO();
 	List<Request> allRequest = dao.findAll(Request.class);
 
-	int numRequest = 0;
+	int numMyRequest = 0;
+	int numReceivedRequest = 0;
 	for (Request r : allRequest) {
+		if (r.getPerson().getId() == person.getId())
+			++numMyRequest;
 		if (r.getItem().getId() == person.getItemNow().getId())
-			++numRequest;
+			++numReceivedRequest;
 	}
 %>
 
@@ -25,11 +28,11 @@
 			</h1>
 
 			<%
-				if (numRequest > 0) {
+				if (numReceivedRequest > 0) {
 			%>
 			<a href="request_list.jsp">
 				<h3>
-					<font color=red font-weight=bold>You have <%=numRequest%>
+					<font color=red font-weight=bold>You have <%=numReceivedRequest%>
 						requests now!</font>
 				</h3> </a>
 			<%
@@ -63,19 +66,17 @@
 
 		<div class="span4" style="background-color:#FFF6EC">
 			<ul class="nav nav-tabs nav-stacked">
-				<li><a href="myprofile.jsp">My Profile</a>
-				</li>
+				<li><a href="myprofile.jsp">My Profile</a></li>
 				<s:if test="#itemNowName==#itemOriginalName">
-					<li><a href="edit_item.jsp">Edit My Item</a>
-					</li>
+					<li><a href="edit_item.jsp">Edit My Item</a></li>
 				</s:if>
-				<li><a href="item_list.jsp">Find Goods</a>
-				</li>
 				<li><a href="myrequest.jsp">My Request <span
-						class="badge badge-warning"><%=numRequest%></span> </a>
-				</li>
-				<li><a href="person_history.jsp">My Exchange History</a>
-				</li>
+						class="badge badge-warning pull-right"><%=numMyRequest%></span> </a></li>
+				<li><a href="request_list.jsp">Received Request <span
+						class="badge badge-warning pull-right"><%=numReceivedRequest%></span> </a></li>
+				<li><a
+					href="person_history.jsp?personID=<s:property value="#session.person.getId()" />">My
+						Exchange History</a></li>
 			</ul>
 		</div>
 	</div>
