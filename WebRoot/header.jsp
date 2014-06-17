@@ -61,7 +61,8 @@ a {
 								</h4>
 							</div>
 						</div>
-					</div></td>
+					</div>
+				</td>
 			</thead>
 			<tbody>
 				<tr>
@@ -74,17 +75,17 @@ a {
 								list</a>
 						</button>
 						<button class="btn btn-large" type="button">
-							<a href="{% url 'user:myrequest' %}" style="text-decoration:none">My
+							<a href="myrequest.jsp" style="text-decoration:none">My
 								request</a>
 						</button>
 						<button class="btn btn-large" type="button">
-							<a href="{% url 'user:request_list' %}"
-								style="text-decoration:none">Received request</a>
+							<a href="request_list.jsp" style="text-decoration:none">Received
+								request</a>
 						</button>
 						<button class="btn btn-large" type="button">
-							<a href="index.jsp" style="text-decoration:none">Log
-								out</a>
-						</button></td>
+							<a href="index.jsp" style="text-decoration:none">Log out</a>
+						</button>
+					</td>
 				</tr>
 				<tr>
 					<td>

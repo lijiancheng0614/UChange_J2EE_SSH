@@ -27,7 +27,7 @@
 			<%
 				if (numRequest > 0) {
 			%>
-			<a href="{% url 'user:request_list'%}">
+			<a href="request_list.jsp">
 				<h3>
 					<font color=red font-weight=bold>You have <%=numRequest%>
 						requests now!</font>
@@ -72,7 +72,7 @@
 				<li><a href="item_list.jsp">Find Goods</a>
 				</li>
 				<li><a href="myrequest.jsp">My Request <span
-						class="badge badge-info"><%=numRequest%></span> </a>
+						class="badge badge-warning"><%=numRequest%></span> </a>
 				</li>
 				<li><a href="person_history.jsp">My Exchange History</a>
 				</li>
