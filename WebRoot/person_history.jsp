@@ -18,7 +18,11 @@
 
 		<p />
 
-		<h4><%=person.getItemOriginal().getName()%></h4>
+		<h4>
+			<a
+				href="item_detail.jsp?itemID=<%=person.getItemOriginal().getId()%>">
+				<%=person.getItemOriginal().getName()%></a>
+		</h4>
 
 		<%
 			List<Deal> l = dao.findByProperty(Deal.class, "p2", person);
@@ -28,7 +32,10 @@
 		<p>
 			<font size=3> --> <%=l.get(i).getDealTime().toLocaleString()%></font>
 		</p>
-		<h4><%=l.get(i).getItem().getName()%></h4>
+		<h4>
+			<a href="item_detail.jsp?itemID=<%=l.get(i).getItem().getId()%>">
+				<%=l.get(i).getItem().getName()%></a>
+		</h4>
 		<%
 			}
 		%>

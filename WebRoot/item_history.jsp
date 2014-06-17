@@ -23,9 +23,9 @@
 				int i;
 				for (i = 0; i < l.size(); ++i) {
 		%>
-		<h4><%=l.get(i).getP1().getFirstName()%>
-			<%=l.get(i).getP1().getLastName()%>
-			(<%=l.get(i).getP1().getStudentId()%>)
+		<h4>
+			<a href="profile.jsp?personID=<%=l.get(i).getP1().getId()%>"><%=l.get(i).getP1().getFirstName()%>
+				<%=l.get(i).getP1().getLastName()%> (<%=l.get(i).getP1().getStudentId()%>)</a>
 		</h4>
 
 		<p>
@@ -34,9 +34,9 @@
 		<%
 			}
 		%>
-		<h4><%=l.get(i-1).getP2().getFirstName()%>
-			<%=l.get(i-1).getP2().getLastName()%>
-			(<%=l.get(i-1).getP2().getStudentId()%>)
+		<h4>
+			<a href="profile.jsp?personID=<%=l.get(i - 1).getP2().getId()%>"><%=l.get(i - 1).getP2().getFirstName()%>
+				<%=l.get(i - 1).getP2().getLastName()%> (<%=l.get(i - 1).getP2().getStudentId()%>)</a>
 		</h4>
 		<%
 			}

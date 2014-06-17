@@ -22,6 +22,10 @@ body {
 	background-color: #F2F5FF;
 }
 
+p, h1, h2, h3, h4 {
+	line-height: 150%;
+}
+
 table {
 	background-color: #FCFCFA;
 	margin-top: 20px;
@@ -73,6 +77,9 @@ a {
 						<button class="btn btn-large" type="button">
 							<a href="item_list.jsp" style="text-decoration:none">Item
 								list</a>
+						</button>
+						<button class="btn btn-large" type="button">
+							<a href="board.jsp" style="text-decoration:none">Board</a>
 						</button>
 						<button class="btn btn-large" type="button">
 							<a href="myrequest.jsp" style="text-decoration:none">My

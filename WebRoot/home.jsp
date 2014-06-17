@@ -66,17 +66,25 @@
 
 		<div class="span4" style="background-color:#FFF6EC">
 			<ul class="nav nav-tabs nav-stacked">
-				<li><a href="myprofile.jsp">My Profile</a></li>
+				<li><a href="myprofile.jsp">My Profile</a>
+				</li>
 				<s:if test="#itemNowName==#itemOriginalName">
-					<li><a href="edit_item.jsp">Edit My Item</a></li>
+					<li><a href="edit_item.jsp">Edit My Item</a>
+					</li>
 				</s:if>
 				<li><a href="myrequest.jsp">My Request <span
-						class="badge badge-warning pull-right"><%=numMyRequest%></span> </a></li>
+						class="badge badge-warning pull-right"><%=numMyRequest%></span> </a>
+				</li>
 				<li><a href="request_list.jsp">Received Request <span
-						class="badge badge-warning pull-right"><%=numReceivedRequest%></span> </a></li>
+						class="badge badge-warning pull-right"><%=numReceivedRequest%></span>
+				</a>
+				</li>
 				<li><a
 					href="person_history.jsp?personID=<s:property value="#session.person.getId()" />">My
-						Exchange History</a></li>
+						Exchange History</a>
+				</li>
+				<li><a href="result.jsp">My Exchange Result</a>
+				</li>
 			</ul>
 		</div>
 	</div>
