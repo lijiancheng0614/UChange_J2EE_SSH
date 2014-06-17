@@ -1,8 +1,14 @@
 <%@include file="header.jsp"%>
 <%@page import="uchange.models.*"%>
+<%@page import="com.opensymphony.xwork2.ActionContext"%>
 
 <div class="container-fluid">
 	<div class="row-fluid">
+		<form method="post" action="resultSwitchAction"
+			name="resultSwitchAction">
+			<button type="submit" class="btn submit btn-primary">ResultSwitch</button>
+		</form>
+
 		<h1>Exchange Result Board</h1>
 
 		<p />
@@ -29,5 +35,4 @@
 		%>
 	</div>
 </div>
-
 <%@include file="footer.htm"%>

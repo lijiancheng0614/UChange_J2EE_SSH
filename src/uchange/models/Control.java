@@ -12,8 +12,8 @@ public class Control implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	private int id;
-	private String resultSwitch;
-	
+	private int resultSwitch;
+
 	public int getId() {
 		return id;
 	}
@@ -22,11 +22,11 @@ public class Control implements Serializable {
 		this.id = id;
 	}
 
-	public String getResultSwitch() {
+	public int getResultSwitch() {
 		return resultSwitch;
 	}
 
-	public void setResultSwitch(String resultSwitch) {
+	public void setResultSwitch(int resultSwitch) {
 		this.resultSwitch = resultSwitch;
 	}
 

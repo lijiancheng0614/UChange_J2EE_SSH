@@ -7,6 +7,7 @@
 		<action name="loginAction" class="uchange.LoginAction">
 			<result name="success">/home.jsp</result>
 			<result name="input">/index.jsp</result>
+			<result name="admin">/admin.jsp</result>
 		</action>
 		<action name="registerAction" class="uchange.RegisterAction">
 			<result name="success">/init_item.jsp</result>
@@ -34,6 +35,9 @@
 		<action name="commentAction" class="uchange.CommentAction">
 			<param name="itemID">${itemID}</param>
 			<result name="success">/item_detail.jsp</result>
+		</action>
+		<action name="resultSwitchAction" class="uchange.ResultSwitchAction">
+			<result name="success">/admin.jsp</result>
 		</action>
 	</package>
 </struts>

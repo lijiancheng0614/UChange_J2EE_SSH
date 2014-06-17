@@ -22,7 +22,7 @@ body {
 	background-color: #F2F5FF;
 }
 
-p, h1, h2, h3, h4 {
+p,h1,h2,h3,h4 {
 	line-height: 150%;
 }
 
@@ -79,15 +79,10 @@ a {
 								list</a>
 						</button>
 						<button class="btn btn-large" type="button">
-							<a href="board.jsp" style="text-decoration:none">Board</a>
+							<a href="myrequest.jsp">My Request</span> </a>
 						</button>
 						<button class="btn btn-large" type="button">
-							<a href="myrequest.jsp" style="text-decoration:none">My
-								request</a>
-						</button>
-						<button class="btn btn-large" type="button">
-							<a href="request_list.jsp" style="text-decoration:none">Received
-								request</a>
+							<a href="request_list.jsp">Received Request</span> </a>
 						</button>
 						<button class="btn btn-large" type="button">
 							<a href="index.jsp" style="text-decoration:none">Log out</a>

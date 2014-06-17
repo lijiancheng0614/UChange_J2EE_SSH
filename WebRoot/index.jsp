@@ -7,6 +7,16 @@
 			+ path + "/";
 %>
 
+<%@page import="uchange.models.*"%>
+<%
+	DAO dao = new DAO();
+	List<Control> l = dao.findAll(Control.class);
+	if (l.size() == 0) {
+		Control control = new Control();
+		control.setResultSwitch(0);
+		dao.save(control);
+	}
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>

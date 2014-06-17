@@ -16,8 +16,57 @@
 		if (r.getItem().getId() == person.getItemNow().getId())
 			++numReceivedRequest;
 	}
-%>
 
+	List<Control> l = dao.findAll(Control.class);
+	Control control = l.get(0);
+	int ResultSwitch = control.getResultSwitch();
+	if (ResultSwitch == 1) {
+%>
+<div class="container-fluid">
+	<div class="row-fluid">
+		<h1>My Exchange Result</h1>
+
+		<p />
+		<%
+			List<Person> allPerson = dao.findAll(Person.class);
+				int p2 = 0;
+				int p3 = 0;
+				Person p = (Person) ActionContext.getContext().getSession()
+						.get("person");
+				if (p.getItemNow().getId() != p.getItemOriginal().getId()) {
+					for (p2 = 0; p2 < allPerson.size(); ++p2)
+						if (allPerson.get(p2).getItemNow().getId() == p
+								.getItemOriginal().getId())
+							break;
+					for (p3 = 0; p3 < allPerson.size(); ++p3)
+						if (allPerson.get(p3).getItemOriginal().getId() == p
+								.getItemNow().getId())
+							break;
+		%>
+		<h4>
+			You should give <a
+				href="item_detail.jsp?itemID=<%=p.getItemOriginal().getId()%>"><%=p.getItemOriginal().getName()%></a>
+			to <a href="profile.jsp?personID=<%=allPerson.get(p2).getId()%>"><%=allPerson.get(p2).getFirstName()%>
+				<%=allPerson.get(p2).getLastName()%> (<%=allPerson.get(p2).getStudentId()%>)</a>
+		</h4>
+		<h4>
+			You can get <a
+				href="item_detail.jsp?itemID=<%=p.getItemNow().getId()%>"><%=p.getItemNow().getName()%></a>
+			from <a href="profile.jsp?personID=<%=allPerson.get(p3).getId()%>"><%=allPerson.get(p3).getFirstName()%>
+				<%=allPerson.get(p3).getLastName()%> (<%=allPerson.get(p3).getStudentId()%>)</a>
+		</h4>
+		<%
+			} else {
+		%>
+		<h4>No Exchange Needed.</h4>
+		<%
+			}
+		%>
+	</div>
+</div>
+<%
+	} else {
+%>
 <div class="container-fluid">
 	<div class="row-fluid">
 		<div class="span8">
@@ -69,25 +118,24 @@
 				<li><a href="myprofile.jsp">My Profile</a>
 				</li>
 				<s:if test="#itemNowName==#itemOriginalName">
-					<li><a href="edit_item.jsp">Edit My Item</a>
-					</li>
+					<li><a href="edit_item.jsp">Edit My Item</a></li>
 				</s:if>
+				<li><a href="item_list.jsp" style="text-decoration:none">Item
+						list</a></li>
 				<li><a href="myrequest.jsp">My Request <span
-						class="badge badge-warning pull-right"><%=numMyRequest%></span> </a>
-				</li>
+						class="badge badge-warning pull-right"><%=numMyRequest%></span> </a></li>
 				<li><a href="request_list.jsp">Received Request <span
 						class="badge badge-warning pull-right"><%=numReceivedRequest%></span>
-				</a>
-				</li>
+				</a></li>
 				<li><a
 					href="person_history.jsp?personID=<s:property value="#session.person.getId()" />">My
 						Exchange History</a>
-				</li>
-				<li><a href="result.jsp">My Exchange Result</a>
 				</li>
 			</ul>
 		</div>
 	</div>
 </div>
-
+<%
+	}
+%>
 <%@include file="footer.htm"%>
